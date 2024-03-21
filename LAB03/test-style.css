@@ -1,0 +1,15 @@
+h1{
+    color: rgb(49, 158, 158);
+    font-family: Impact, Gill Sans, Trebuchet MS;
+    text-shadow: 2px 2px #000000;
+}
+p{
+    font-size: 25px;
+    font-family: Courier New,Trebuchet MS, sans-serif;
+    color: rgb(255, 53, 221);
+    font-weight: 900;
+    text-shadow: 2px 2px 5px #000000;
+}
+body {
+    background-color: rgb(175, 170, 170);
+}
