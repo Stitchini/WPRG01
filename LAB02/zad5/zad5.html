@@ -1,0 +1,32 @@
+<html>
+    <head><title>Zad 5</title></head>
+    <body>
+        <form action="" method="post">
+            <label for="imie">Imie<input type="text" maxlength="13"></label><br>
+            <label for="fav_colour">Favorite colour:<datalist id="fav_colour">
+                <option value="Red"></option>
+                <option value="Yellow"></option>
+                <option value="Green"></option>
+                <option value="Blue"></option>
+                <option value="Pink"></option>
+                <option value="Black"></option>
+            </datalist>
+            <input list="fav_colour" placeholder="Favorite Colour"><input type="submit" name="Save" value="Save" id="save1">
+            </label>
+        </form>
+        <form>
+            <label for="value1">Value:<input type="range" max="100" id="value1" min="0" value="75"></label><br>
+            <input type="submit" value="Save" name="Save" id="save2"><br>
+            <label for="current_progress">Current Progress:
+            <progress id="current progress" value="25" max="100">25%</progress>
+        </label><br>
+        <label for="overall_progress">Overall Progress:
+            <progress id="overall_progress" value="80" max="100">80%</progress>
+        </label><br>
+        <input type="submit" name="Save" value="Save" id="save2"><br>
+        <label for="fullname">Fullname:<input type="text"></label><br>
+        <input type="submit" name="Save" value="Save" id="save3">
+        <input type="hidden" value="bot detected" id="botcheck">
+        </form>
+    </body>
+</html>

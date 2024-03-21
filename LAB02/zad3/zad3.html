@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Travel reservation form</title>
+    </head>
+    <body>
+        <h1>Travel reservation form</h1>
+        <h3>* denotes mandatory</h3>
+        <form>
+        <ul style="list-style-type: none;">
+        <li><label>*Full Name:<br><input type="text" name="FullName" placeholder="FirstName LastName"></label></li>
+        <li><label>*Email:<br><input type="email"></label></li>
+        <li><label>*Select tour package:</label><br>
+        <select name="tourpackage">
+            <option>all inclusive</option>
+            <option>all exclusive</option>
+            <option>buy your own shit</option>
+        </select></li>
+        <li><label>*Arrival date:<br><input type="date" placeholder="m/d/y"></label></li>
+        <li><label>*Number of people:<br>
+            <input type="number"></label></li>
+        <li><label for="activities">*What would you want to avail?:</label><br>
+                <li><label>Boarding <input type="checkbox" name="activity" value="Boarding"></label></li>
+                <li><label>Fooding<input type="checkbox" name="activity" value="Fooding"></label></li>
+                <li><label>Sight seeing<input type="checkbox" name="activity" value="Sight-seeing"></label></li>
+        </li>
+        <li><label>Discount Coupon code:<br><input type="text" maxlength="16"></label></li>
+        <li><label>*Terms and conditions:<br><input type="radio">i agree<input type="radio">i disagree</label></li>
+        <li><input type="submit" value="Complete reservation"></li>
+    </form>
+    </ul>
+    </body>
+</html>

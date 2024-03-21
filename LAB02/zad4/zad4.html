@@ -1,0 +1,68 @@
+<html>
+    <body>
+        <lable><b>Title *</b><br><input type="text"></lable><br>
+        <lable><b>Date</b><br><input type="date"></lable>
+        <fieldset>
+            <legend><b>DATE/TIME</b></legend>
+            <input type="date"><input type="time"><br>
+            <p><small>Date and time description</small></p>
+        </fieldset>
+        <fieldset>
+            <legend><b>DATE RANGE</b></legend>
+            <fieldset><legend>START DATE</legend><input type="date"><input type="time"></fieldset>
+            <fieldset><legend>END DATE</legend><input type="date"><input type="time"></fieldset>
+            <p><small>Date range description</small></p>
+        </fieldset>
+        <fieldset>
+            <legend><b>DATE/TIME LIST</b></legend>
+            <label for="year"><select name="Year" id="year">
+                <option value="" disabled selected hidden>Year</option>
+                <script>
+                    for (let i = 2024; i > 1924; i--) {
+                        document.write("<option value=" + i + ">" + i + "</option>");
+                    }
+                </script>
+            </select></label>
+            <label for="month"><select name="Month" id="month">
+                <option value="" disabled selected hidden>Month</option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select></label>
+            <label for="day"><select>
+                <option value="" disabled selected hidden>Day</option>
+                <script>
+                    for (let i = 1; i < 32; i++) {
+                        document.write("<option value=" + i + ">" + i + "</option>");
+                    }
+                </script>
+            </select></label>
+            <label for="hour"><select>
+                <option value="" disabled selected hidden>Hour</option>
+                <script>
+                    for (let i = 0; i < 24; i++) {
+                        document.write("<option value=" + i + ">" + i + "</option>");
+                    }
+                </script>
+            </select></label>
+            <label for="minute"><select>
+                <option value="" disabled selected hidden>Minute</option>
+                <script>
+                    for (let i = 0; i < 60; i++) {
+                        document.write("<option value=" + i + ">" + i + "</option>");
+                    }
+                </script>
+            </select></label>\
+            <p><small>Date / time list description</small></p>
+        </fieldset>
+    </body>
+</html>
