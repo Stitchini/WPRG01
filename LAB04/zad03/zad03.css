@@ -1,0 +1,79 @@
+body {
+    background-color: #9E9FA9;
+}
+
+ul {
+    list-style-type: none;
+    margin-right: 10px;
+}
+.labels {
+    float: left;
+    text-align: right;
+    margin-right: 10px;
+}
+fieldset {
+    border-color: #51E5FF;
+    padding: 20px 10px;
+}
+
+.header {
+    background-color: #2A2B2E;
+    color: #51E5FF;
+    position: fixed;
+    height: 5em;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    text-align: center;
+}
+.AddForm {
+    margin-top: 6em;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    max-width: 800px;
+    padding: 40px;
+    background-color: #B3B3BC;
+    box-shadow: 5px 0px 15px 10px #51E5FF;
+}
+.Button {
+    float: right;
+    margin: 0;
+}
+
+.table {
+    background-color: #B3B3BC;
+    box-sizing: border-box;
+    padding: 20px;
+    box-shadow: 5px 0px 15px 10px #51E5FF;
+    max-width: 800px;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+}
+table {
+    border-collapse: collapse;
+    border: 2px #51E5FF;
+    width: 100%;
+}
+thead{
+    text-align: left;
+}
+th, td {
+    padding: 6px;
+}
+tr:nth-child(even) {
+    background-color: #9E9FA9;
+}
+tr:nth-child(odd) {
+    background-color: #A9AAB2;
+}
+
+input[type=submit] {
+    color: #51E5FF;
+    background-color: #2A2B2E;
+    padding: 6px 18px;
+    cursor: pointer;
+    font-size: medium;
+}

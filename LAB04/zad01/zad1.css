@@ -1,0 +1,29 @@
+.div2{
+    background-color: #C2FF88;
+    border: 10px solid white;
+    padding: 20px;
+}
+.diver {
+    padding: 5px;
+    border: 1px solid black;
+    background-color: white;
+}
+.napis {
+
+    background-color: #98FB98;
+    width: auto;
+    padding: 20px;
+    border: 1px solid;
+}
+p {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+h1 {
+    padding-top: 1px;
+}
+.div3 {
+    padding: 25px;
+    width:50%;
+    background-color: #88FFC5;
+}
