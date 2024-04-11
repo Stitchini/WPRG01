@@ -1,0 +1,85 @@
+body {
+    background-color: #333845;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#header_image {
+    background-image: url(https://c4.wallpaperflare.com/wallpaper/180/382/440/material-design-design-minimalist-minimal-wallpaper-preview.jpg);
+    height: 35vh;
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #F74226;
+}
+#flex_container {
+    position: absolute;
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: row;
+    /* gap: 5%; */
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* border: 2px solid; */
+    width: 100%;
+    opacity: 0.8;
+    /* background-color: #454C5E; */
+}
+h3 {
+    margin-top: 0;
+    margin-bottom: 1vh;
+}
+.box {
+    font: bold;
+    color: #afb8c8;
+    font-size: 25;
+    text-align: center;
+     /* outline: auto; */
+     padding-left: 15px;
+     padding-right: 15px;
+     padding-bottom: px;
+     background-color: #59544B;
+     margin-right: 15%;
+     /* height: fit-content; */
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 1px;
+     opacity: 0.5;
+    }
+
+.box:hover {
+    opacity: 1.0;
+    cursor: pointer;
+}
+#text_flex {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 5vh;
+    height: 20vh;
+}
+#text_flex2 {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 5vh;
+    height: 20vh;
+}
+.TextBox {
+    border: 2px solid #F74226;
+    height: 100%;
+    margin-right: 25px;
+    width: 50%;
+}
+.TextBoxUp {
+    background-color: #59544B;
+    height: 50%;
+}
+
+.TextBoxBottom {
+    width: 100%;
+    height: 50%;
+    background-color: #4b4e55;
+    /* outline: 2px solid; */
+}

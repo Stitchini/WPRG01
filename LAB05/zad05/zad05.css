@@ -1,0 +1,28 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(8, auto);
+    grid-gap: 10px;
+}
+.grid-item{
+    background-color: beige;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+.grid-item.item9 {
+    grid-column: span 2;
+    background-color: chocolate;
+}
+.grid-item.item11 {
+    grid-row: span 4;
+    background-color: aquamarine;
+}
+.grid-item.item16 {
+    grid-row: span 2;
+    grid-column: span 2;
+    background-color: darkcyan;
+}
+.grid-item.item29 {
+    grid-column: span 4;
+    background-color: coral;
+}

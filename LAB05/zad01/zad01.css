@@ -1,0 +1,58 @@
+body{
+    margin: 0%;
+}
+#container {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-content: start;
+    height: 100%;
+}
+.box {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    flex: fit-content;
+    font-size:
+        18pt;
+    text-align: center;
+    line-height:
+        50px;
+    padding:
+        10px 10px 10px 10px;
+    margin:
+        0;
+    height:100%;
+}
+.box1 {
+    background-color: aqua;
+}
+.box2 {
+    background-color: blueviolet;
+    order: 2;
+}
+.box3 {
+    background-color: cadetblue;
+    order: -1;
+}
+.box4{
+    background-color: yellowgreen;
+}
+.box5{
+    background-color: teal;
+}
+.box6{
+    background-color: coral;
+}
+.box7{
+    background-color: chocolate;
+    order: 2;
+}
+.box8{
+    background-color: cornflowerblue;
+}
+.box9{
+    background-color: crimson;
+}
+.box10{
+    background-color: darksalmon;
+}
