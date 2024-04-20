@@ -1,5 +1,5 @@
 <?php
-function chars($haslo) : bool{
+function chars($haslo){
     if(!ctype_alnum($haslo)){
         return false;
     }
