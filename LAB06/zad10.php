@@ -22,17 +22,13 @@ function twodigits($haslo){
         return false;
     }
 }
-function alphanumeric($haslo)
-{
-    return ctype_alnum($haslo);
-}
 do{
     $password = readline("Wpisz haslo: ");
     $passlng = strlen($password);
-    $chartrue = chars($password);
     $numbers = twodigits($password);
+    $alphanumeric = chars($password);
 
 
 
-}while($passlng > 8 and chars() == true and alphanumeric() ==true);
+}while($passlng < 8 or $numbers == false or $alphanumeric == false);
 echo "Dobre Haslo";
