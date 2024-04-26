@@ -1,4 +1,5 @@
 html, body {
+    background-color: #4b4e55;
     font-family: Arial, sans-serif;
     text-align: center;
     width: 100%;
@@ -8,18 +9,28 @@ html, body {
 .calculator {
     margin: 50px;
     padding: 10px;
+    border-top: 5px solid green;
+    border-left: 5px solid green;
+    border-bottom: 5px solid greenyellow;
+    border-right: 5px solid greenyellow;
+    background-color: #9E9FA9;
 }
 .form-container {
-    display: inline-block;
     text-align: left;
     margin-bottom: 20px;
 }
-.form-container input[type="text"],
-.form-container select {
-    width: 150px;
-    margin-bottom: 10px;
+input[type=text], select{
+    width: 15%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 .form-container .submit-btn {
     display: block;
     margin-top: 10px;
+    width: 45%;
+    height: 15%;
 }

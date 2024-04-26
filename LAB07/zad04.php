@@ -22,7 +22,7 @@
 </fieldset>
 </div>
 <div class="answer">
-    <?php include 'file.php'; ?>`
+    <?php include 'file.php'; ?>
 </div>
 </body>
 </html>

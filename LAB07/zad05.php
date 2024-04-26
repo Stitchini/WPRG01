@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-
+    <link href="zad05.css" rel="stylesheet">
 </head>
 <body>
 <h1>Calculator</h1>
 <div class="calculator">
     <div class="form-container">
-        <form action="process_form.php" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <input type="text" id="num1" name="num1" placeholder="num1">
             <select id="operator" name="operator">
                 <option value="+">+</option>
@@ -23,8 +22,8 @@
         </form>
     </div>
     <div class="form-container">
-        <form action="" method="post">
-            <input type="text" id="text" name="text">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <input type="text" id="number" name="number">
             <select id="option" name="option">
                 <option value="Sinus">Sinus</option>
                 <option value="Cosinus">Cosinus</option>
@@ -37,6 +36,12 @@
             <input type="submit" value="Submit" class="submit-btn">
         </form>
     </div>
+</div>
+<div class="simpleanswer">
+    <?php include 'simple.php';?>
+</div>
+<div class="advanswer">
+    <?php include 'advanced.php';?>
 </div>
 </body>
 </html>
