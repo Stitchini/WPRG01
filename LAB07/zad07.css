@@ -1,0 +1,73 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #4b4e55;
+}
+.container {
+    width: 25%;
+    margin: auto;
+    background-color: #9E9FA9;
+    padding: 20px;
+    border-radius: 10px;
+    border-top: 5px solid green;
+    border-left: 5px solid green;
+    border-bottom: 5px solid greenyellow;
+    border-right: 5px solid greenyellow;
+}
+h2 {
+    text-align: center;
+}
+.text-input {
+    margin-bottom: 20px;
+}
+.text-input input,
+.text-input select,
+.text-input textarea {
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+.text-input textarea {
+    resize: vertical;
+}
+.text-input p {
+    margin-bottom: 5px;
+}
+.text-input label {
+    margin-right: 10px;
+}
+.checkbox-choice,
+.radio-choice {
+    display: flex;
+    flex-direction: row;
+}
+.checkbox-choice,
+.radio-choice{
+    display: flex;
+    justify-content: space-around;
+}
+.checkbox-choice label,
+.radio-choice label {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
+.answer {
+    margin: auto;
+    width: 25%;
+}
