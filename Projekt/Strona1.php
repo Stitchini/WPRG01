@@ -9,30 +9,36 @@
 </head>
 <body>
 <?php
+session_start();
+unset($_SESSION['message']);
 $show_tables = false;
 $people_number = 0;
 
 if ($_SERVER["REQUEST_METHOD"] == TRUE && isset($_POST["check_availability"])){
+    if (!empty($_POST['res_date']) && !empty($_POST["res_time"]) && !empty($_POST["people_number"]) && !empty($_POST["first_name"]) && !empty($_POST["last_name"])){
     $date = $_POST['res_date'];
     $time = $_POST['res_time'];
     $people_number = $_POST['people_number'];
     $firstname = $_POST['first_name'];
     $lastname = $_POST['last_name'];
-    $show_tables = true;
+    $show_tables = true;}
+    else{
+        $_SESSION['message'] = 'Data input kaputt';
+        }
 }
 
 ?>
-<form method="post" action="">
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <label for="res_date">Date:</label>
     <input type="date" name="res_date"><br>
     <label for="res_time">Time:</label>
     <input type="time" name="res_time"><br>
     <label for="people_number">Number of people:</label>
-    <input type="number" id="people_number" name="people_number" min="1" max="6" required>
+    <input type="number" id="people_number" name="people_number" min="1" max="6" >
     <label for="first_name">First name:</label>
-    <input type="text" name="first_name" placeholder="firstname">
+    <input type="text" name="first_name" placeholder="firstname" >
     <label for="last_name">Last name:</label>
-    <input type="text" name="last_name" placeholder="lastname"><br>
+    <input type="text" name="last_name" placeholder="lastname" ><br>
     <button type="submit" name="check_availability">Check availability</button>
 </form>
 <?php if ($show_tables): ?>
@@ -58,12 +64,16 @@ if ($_SERVER["REQUEST_METHOD"] == TRUE && isset($_POST["check_availability"])){
         $available = in_array($i, $availableTables);
         $class = $available ? 'available' : 'unavailable';
         $disabled = $available ? '' : 'disabled';
+        $color = $available ? 'green' : 'red';
         echo '<input type="radio" id="table' . $i . '" name="table_number" value="' . $i . '" ' . $disabled . '>';
-        echo '<label for="table' . $i . '" class="' . $class . '">Table ' . $i . '</label><br>';
+        echo '<label  for="table' . $i . '" class="' . $class . '">Table ' . $i . '</label><br>';
     }
     ?>
     <button type="submit" name="confirm_reservation">Confirm Reservation</button>
 </form>
 <?php endif; ?>
+<div>
+    <?= $_SESSION['message'] ?? '' ?>
+</div>
 </body>
 </html>
