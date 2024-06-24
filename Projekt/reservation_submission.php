@@ -1,17 +1,19 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["confirm_reservation"])) {
-    $date = htmlspecialchars($_POST['res_date']);
-    $time = htmlspecialchars($_POST['res_time']);
-    $firstName = htmlspecialchars($_POST['first_name']);
-    $lastName = htmlspecialchars($_POST['last_name']);
-    $peopleNumber = htmlspecialchars($_POST['people_number']);
-    $tableNumber = htmlspecialchars($_POST['table_number']);
-
+    session_start();
+    $date = $_SESSION['date'];
+    $time = $_SESSION['time'];
+    $firstName = $_SESSION['first_name'];
+    $lastName = $_SESSION['last_name'];
+    $peopleNumber = $_SESSION['people_number'];
+    $tableNumber = $_SESSION['table_number'];
+    $timeend = $_SESSION['time_end'];
+    var_dump($_SESSION);
     // In a future implementation, here you would insert the reservation into the database
 
     // Display a confirmation message
     echo '<p>Thank you for reserving, ' . $firstName . ' ' . $lastName . '.</p>';
-    echo '<p>Reservation details: ' . $date . ' at ' . $time . ' for table ' . $tableNumber . ' for ' . $peopleNumber . ' people.</p>';
+    echo '<p>Reservation details: ' . $date . ' at ' . $time . '-' .  $timeend .' for table ' . $tableNumber . ' for ' . $peopleNumber . ' people.</p>';
 }
 ?>
 
