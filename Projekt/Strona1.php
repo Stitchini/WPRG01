@@ -58,7 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == TRUE && isset($_POST["check_availability"])){
         $available = in_array($i, $availableTables);
         $class = $available ? 'available' : 'unavailable';
         $disabled = $available ? '' : 'disabled';
-        echo '<input type="radio" id="table' . $i . '" name="table_number" value="' . $i . '" ' . $disabled . '>';
+        $color = $available ? 'green' : 'red';
+        echo '<input style="background-color: ' . $color . '" type="radio" id="table' . $i . '" name="table_number" value="' . $i . '" ' . $disabled . '>';
         echo '<label for="table' . $i . '" class="' . $class . '">Table ' . $i . '</label><br>';
     }
     ?>
@@ -67,3 +68,5 @@ if ($_SERVER["REQUEST_METHOD"] == TRUE && isset($_POST["check_availability"])){
 <?php endif; ?>
 </body>
 </html>
+
+
