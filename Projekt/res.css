@@ -1,0 +1,10 @@
+@font-face {font-family: Gothic_821_condensed_btt; src: url("gothic_821_condensed_bt.ttf")}
+body {
+    font-family: Gothic_821_condensed_btt;
+    margin: 20px;
+    padding: 20px;
+    max-width: 600px;
+}
+p {
+    font-size: 26px;
+}
