@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['message'] = "Select date NOT IN THE PAST";
         }
         else{
-        if (date("H") < 8 && date("H") > 19){
+        if ($_POST['res_time'] < "08:00" || $_POST['res_time'] > "19:00"){
             $_SESSION['message'] = "Kaputt die buisness ist nicht geoffnet";
         }
         else{
