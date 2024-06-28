@@ -1,8 +1,9 @@
 <?php
 include_once "DBhandle.php";
 session_start();
-echo '<p>Thank you for reservation'. " " . $_SESSION['first_name'] . " " . $_SESSION['last_name']. '</p>';
+echo '<div class="message"><p>Thank you for reservation'. " " . $_SESSION['first_name'] . " " . $_SESSION['last_name']. '</p>';
 echo '<p>Reservation details:'. " " . $_SESSION['date'] . " " . $_SESSION['time'] . " to " . $_SESSION['time_end'] . " party of " . $_SESSION['people_number']. " table:" . $_SESSION['table_id'] .'</p>';
+echo '<p><a href="Strona1.php">Back to Home</a></p></div>';
 $firstname = $_SESSION['first_name']; $lastname = $_SESSION['last_name'];
 $date = $_SESSION['date']; $time = $_SESSION['time']; $timeend = $_SESSION['time_end']; $peoplenumber = $_SESSION['people_number']; $table = $_SESSION['table_id'];
 $querry = "INSERT INTO reservations (FirstName, LastName, Date, ResStart, ResEnd, Table_id) VALUES ('$firstname', '$lastname', '$date', '$time', '$timeend', '$table')";
@@ -25,6 +26,6 @@ try {
     <title>Reservation Confirmation</title>
 </head>
 <body>
-<p><a href="Strona1.php">Back to Home</a></p>
+
 </body>
 </html>

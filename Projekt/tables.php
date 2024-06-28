@@ -50,7 +50,7 @@ function create_tables(): void {
     foreach ($_SESSION['table_seats'] as $id => $seats) {
         $available = in_array($id, $availableTables);
         $disabled = $available ? '' : 'disabled';
-        $color = $available ? 'green' : 'red';
+        $color = $available ? '#5FE4A1' : '#E45F5F';
         echo '<input type="radio" id="table' . $id . '" name="table_number" value="' . $id . '" ' . $disabled . '>';
         echo '<label style="background-color:' . $color . '" for="table' . $id . '">Table ' . $id . '</label><br>';
     }
@@ -77,12 +77,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['table_number'])) {
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="tables.css" rel="stylesheet">
     <title>Table Selection</title>
 </head>
 <body>
 <form method="post">
-    <?php create_tables(); ?>
-    <button type="submit" name="confirm_reservation">Submit</button>
+    <div class="tables">
+        <?php create_tables(); ?>
+        <button type="submit" name="confirm_reservation">Submit</button>
+    </div>
 </form>
 </body>
 </html>
