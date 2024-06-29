@@ -10,24 +10,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($_POST['res_date'] == date('Y-m-d') && $_POST['res_time'] < date("H:i")){
                 $_SESSION['message'] = "Time is in the past";
             }
-        if ($_POST['res_time'] < "08:00" || $_POST['res_time'] > "19:00"){
-            $_SESSION['message'] = "Kaputt die buisness ist nicht geoffnet";
+            else{
+                if ($_POST['res_time'] < "08:00" || add_time($_POST['res_time'],$_POST['hours']) > "22:00"){
+                    $_SESSION['message'] = "Kaputt die buisness ist nicht geoffnet";
+                }
+                else{
+                    if (intval($_POST['people_number'] < 1 || $_POST['people_number'] > 6)){
+                        $_SESSION['message'] = "Wrong number of people";
+                    }
+                    else{
+                        $_SESSION['hours'] = $_POST['hours'];
+                        $_SESSION['date'] = $_POST['res_date'];
+                        $_SESSION['time_start'] = $_POST['res_time'];
+                        $_SESSION['people_number'] = $_POST['people_number'];
+                        $_SESSION['first_name'] = $_POST['first_name'];
+                        $_SESSION['last_name'] = $_POST['last_name'];
+                        $_SESSION['time_end'] = add_time($_SESSION['time_start'], $_SESSION['hours']);
+                        header("Location: tables.php");
+                        exit();
+                    }
+                }
+            }
         }
-        else{
-        if (intval($_POST['people_number'] < 1 || $_POST['people_number'] > 6)){
-            $_SESSION['message'] = "Wrong number of people";
-        }
-        else{
-        $_SESSION['date'] = $_POST['res_date'];
-        $_SESSION['time'] = $_POST['res_time'];
-        $_SESSION['people_number'] = $_POST['people_number'];
-        $_SESSION['first_name'] = $_POST['first_name'];
-        $_SESSION['last_name'] = $_POST['last_name'];
-        header("Location: tables.php");
-        exit();}}}
     } else {
         $_SESSION['message'] = 'Kaputt- input invalid';
     }
+}
+
+function add_time($time, $hour) : string {
+    list($hours, $minutes) = explode(":", $time);
+    $hours = intval($hours);
+    $hours_end = $hours + $hour;
+    return str_pad($hours_end, 2, '0', STR_PAD_LEFT) . ":" . $minutes;
 }
 ?>
 
@@ -99,18 +113,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" name="first_name" placeholder="First name"><br>
             <label for="last_name">Last name:</label>
             <input type="text" name="last_name" placeholder="Last name"><br>
+            <label for="hours">How long:</label>
+            <input type="number" id="hours" name="hours" min="1" max="4"><br>
             <button type="submit" name="check_availability">Check availability</button>
         </form>
         <div>
             <?= $_SESSION['message'] ?? '' ?>
         </div>
-        <p class="small-print">The table will be booked for 3 hours.</p>
     </div>
 </div>
 <div class="footer">
     <div class="opening-hours">
         <h2>Opening Hours</h2>
-        <p>Monday - Sunday: 8:00 - 21:00</p>
+        <p>Monday - Sunday: 8:00 - 22:00</p>
     </div>
     <div class="contact-info">
         <h2>Contact Us</h2>

@@ -11,37 +11,50 @@ function create_tables(): void {
     }catch (mysqli_sql_exception) {
         echo "Could not connect";
     }
-    $date = $_SESSION['date']; $time = $_SESSION['time'];
+    $date = $_SESSION['date']; $time_start = $_SESSION['time_start']; $time_end = $_SESSION['time_end'];
     $people_number = intval($_SESSION['people_number']);
     $_SESSION['table_seats'] = [1=>4, 2=>6, 3=>4, 4=>2,5=>4, 6=>2, 7=>4, 8=>6, 9=>4];
     $availableTables = [];
+    do{
     foreach ($_SESSION['table_seats'] as $id => $seats){
-        $sql = "SELECT * FROM `reservations` WHERE Date = '$date' AND Table_id = '$id' AND '$time' BETWEEN ResStart AND ResEnd;";
+        $sql1 = "SELECT * FROM `reservations` WHERE Date = '$date' AND Table_id = '$id' AND '$time_start' BETWEEN ResStart AND ResEnd;";
+        $sql2 = "SELECT * FROM `reservations` WHERE Date = '$date' AND Table_id = '$id' AND '$time_end' BETWEEN ResStart AND ResEnd;";
         if ($people_number <= 2){
             if ($seats <= 2){
-                $result = mysqli_query($mysqli, $sql);
-                if (mysqli_num_rows($result) == 0){
+                $result1 = mysqli_query($mysqli, $sql1);
+                $result2 = mysqli_query($mysqli, $sql2);
+                if (mysqli_num_rows($result1) == 0 && mysqli_num_rows($result2) == 0){
                     array_push($availableTables, $id);
                 }
             }
         }
         elseif ($people_number > 2 && $people_number <=4){
             if ($seats > 2 && $seats <= 4){
-                $result = mysqli_query($mysqli, $sql);
-                if (mysqli_num_rows($result) == 0){
+                $result1 = mysqli_query($mysqli, $sql1);
+                $result2 = mysqli_query($mysqli, $sql2);
+                if (mysqli_num_rows($result1) == 0 && mysqli_num_rows($result2) == 0){
                     array_push($availableTables, $id);
                 }
             }
         }
         elseif ($people_number > 4){
             if ($seats > 4){
-                $result = mysqli_query($mysqli, $sql);
-                if (mysqli_num_rows($result) == 0){
+                $result1 = mysqli_query($mysqli, $sql1);
+                $result2 = mysqli_query($mysqli, $sql2);
+                if (mysqli_num_rows($result1) == 0 && mysqli_num_rows($result2) == 0){
                     array_push($availableTables, $id);
                 }
             }
         }
     }
+
+    if ($people_number > 6){
+        echo "Sorry no tables are available<br>";
+        echo '<p><a href="Strona1.php">Back to Home</a></p>';
+        break;
+    }
+    $people_number = $people_number + 2;
+    }while (empty($availableTables));
 //    if ($people_number <= 4) {
 //        $availableTables = [2, 4, 6, 8];
 //    } elseif ($people_number <= 6) {
@@ -52,7 +65,7 @@ function create_tables(): void {
         $disabled = $available ? '' : 'disabled';
         $color = $available ? '#5FE4A1' : '#E45F5F';
         echo '<input type="radio" id="table' . $id . '" name="table_number" value="' . $id . '" ' . $disabled . '>';
-        echo '<label style="background-color:' . $color . '" for="table' . $id . '">Table ' . $id . '</label><br>';
+        echo '<label style="background-color:' . $color . '" for="table' . $id . '">Table ' . $id . ' Seats: ' . $seats .'</label><br>';
     }
 }
 function add_time($time, $hour) : string {
@@ -64,8 +77,6 @@ function add_time($time, $hour) : string {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['table_number'])) {
     $_SESSION['table_id'] = $_POST['table_number'];
-    $res_start = $_SESSION['time'];
-    $_SESSION['time_end'] = add_time($res_start, 3);
     header("Location: reservation_submission.php");
     exit();
 }
