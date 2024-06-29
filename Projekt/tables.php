@@ -15,15 +15,15 @@ function create_tables(): void {
     $people_number = intval($_SESSION['people_number']);
     $_SESSION['table_seats'] = [1=>4, 2=>6, 3=>4, 4=>2,5=>4, 6=>2, 7=>4, 8=>6, 9=>4];
     $availableTables = [];
-    do{
+    do{ // 3.
     foreach ($_SESSION['table_seats'] as $id => $seats){
         $sql1 = "SELECT * FROM `reservations` WHERE Date = '$date' AND Table_id = '$id' AND '$time_start' BETWEEN ResStart AND ResEnd;";
-        $sql2 = "SELECT * FROM `reservations` WHERE Date = '$date' AND Table_id = '$id' AND '$time_end' BETWEEN ResStart AND ResEnd;";
+        $sql2 = "SELECT * FROM `reservations` WHERE Date = '$date' AND Table_id = '$id' AND '$time_end' BETWEEN ResStart AND ResEnd;"; // 4.
         if ($people_number <= 2){
             if ($seats <= 2){
                 $result1 = mysqli_query($mysqli, $sql1);
                 $result2 = mysqli_query($mysqli, $sql2);
-                if (mysqli_num_rows($result1) == 0 && mysqli_num_rows($result2) == 0){
+                if (mysqli_num_rows($result1) == 0 && mysqli_num_rows($result2) == 0){ // 4.
                     array_push($availableTables, $id);
                 }
             }
@@ -32,7 +32,7 @@ function create_tables(): void {
             if ($seats > 2 && $seats <= 4){
                 $result1 = mysqli_query($mysqli, $sql1);
                 $result2 = mysqli_query($mysqli, $sql2);
-                if (mysqli_num_rows($result1) == 0 && mysqli_num_rows($result2) == 0){
+                if (mysqli_num_rows($result1) == 0 && mysqli_num_rows($result2) == 0){ // 4.
                     array_push($availableTables, $id);
                 }
             }
@@ -41,7 +41,7 @@ function create_tables(): void {
             if ($seats > 4){
                 $result1 = mysqli_query($mysqli, $sql1);
                 $result2 = mysqli_query($mysqli, $sql2);
-                if (mysqli_num_rows($result1) == 0 && mysqli_num_rows($result2) == 0){
+                if (mysqli_num_rows($result1) == 0 && mysqli_num_rows($result2) == 0){ // 4.
                     array_push($availableTables, $id);
                 }
             }
@@ -54,18 +54,14 @@ function create_tables(): void {
         break;
     }
     $people_number = $people_number + 2;
-    }while (empty($availableTables));
-//    if ($people_number <= 4) {
-//        $availableTables = [2, 4, 6, 8];
-//    } elseif ($people_number <= 6) {
-//        $availableTables = [1, 3, 5, 7, 9];
-//    }
+    }while (empty($availableTables)); // 3.
+
     foreach ($_SESSION['table_seats'] as $id => $seats) {
         $available = in_array($id, $availableTables);
         $disabled = $available ? '' : 'disabled';
         $color = $available ? '#5FE4A1' : '#E45F5F';
         echo '<input type="radio" id="table' . $id . '" name="table_number" value="' . $id . '" ' . $disabled . '>';
-        echo '<label style="background-color:' . $color . '" for="table' . $id . '">Table ' . $id . ' Seats: ' . $seats .'</label><br>';
+        echo '<label style="background-color:' . $color . '" for="table' . $id . '">Table ' . $id . ' Seats: ' . $seats .'</label><br>'; // 2.
     }
 }
 function add_time($time, $hour) : string {

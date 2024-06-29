@@ -2,7 +2,7 @@
 include_once "DBhandle.php";
 session_start();
 echo '<div class="message"><p>Thank you for reservation'. " " . $_SESSION['first_name'] . " " . $_SESSION['last_name']. '</p>';
-echo '<p>Reservation details:'. " " . $_SESSION['date'] . " " . $_SESSION['time'] . " to " . $_SESSION['time_end'] . " party of " . $_SESSION['people_number']. " table:" . $_SESSION['table_id'] .'</p>';
+echo '<p>Reservation details:'. " " . $_SESSION['date'] . " " . $_SESSION['time_start'] . " to " . $_SESSION['time_end'] . " party of " . $_SESSION['people_number']. " table:" . $_SESSION['table_id'] .'</p>';
 echo '<p><a href="Strona1.php">Back to Home</a></p></div>';
 $firstname = $_SESSION['first_name']; $lastname = $_SESSION['last_name'];
 $date = $_SESSION['date']; $time = $_SESSION['time_start']; $timeend = $_SESSION['time_end']; $peoplenumber = $_SESSION['people_number']; $table = $_SESSION['table_id'];

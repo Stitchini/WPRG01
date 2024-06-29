@@ -15,6 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['message'] = "Kaputt die buisness ist nicht geoffnet";
                 }
                 else{
+                    if (intval($_POST['hours']) > 4 || intval($_POST['hours']) < 1){ // 1.
+                        $_SESSION['message'] = "Wrong hours";
+                    }
                     if (intval($_POST['people_number'] < 1 || $_POST['people_number'] > 6)){
                         $_SESSION['message'] = "Wrong number of people";
                     }
