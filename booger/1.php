@@ -1,8 +1,30 @@
 <?php
 require_once 'movie.php';
 require_once 'funkcje.php';
-$movies[] = MoviesArray();
-$_SESSION["movies"] = $movies;
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    $movies = MoviesArray();
+    $_SESSION["movies"] = $movies;
+}
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if (isset($_POST['operation'])){
+        switch ($_POST['operation']){
+            case "YearAsc":
+                sortMovies($_SESSION["movies"], "releaseYear", "asc");
+                break;
+            case "YearDesc":
+                sortMovies($_SESSION["movies"], "releaseYear", "desc");
+                break;
+            case "RatingAsc":
+                sortMovies($_SESSION["movies"], "rating", "asc");
+                break;
+            case "RatingDesc":
+                sortMovies($_SESSION["movies"], "rating", "desc");
+                break;
+        }
+        //echo print_r($_SESSION["movies"], true);
+    }
+}
 ?>
 
 <!doctype html>
@@ -28,7 +50,7 @@ $_SESSION["movies"] = $movies;
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($movies as $movie) : ?>
+    <?php foreach ($_SESSION['movies'] as $movie) : ?>
         <tr>
             <td><?= $movie->getId(); ?></td>
             <td><?= $movie->getTitle(); ?></td>
@@ -40,16 +62,16 @@ $_SESSION["movies"] = $movies;
     <?php endforeach;?>
     </tbody>
 </table>
-<form action="handle.php" method="post">
+<form action="" method="post">
     <button type="submit" name="operation" value="YearAsc">Sort by Year ascending</button>
 </form>
-<form action="handle.php" method="post">
+<form action="" method="post">
     <button type="submit" name="operation" value="YearDesc">Sort by Year descending</button>
 </form>
-<form action="handle.php" method="post">
+<form action="" method="post">
     <button type="submit" name="operation" value="RatingAsc">Sort by Rating ascending</button>
 </form>
-<form action="handle.php" method="post">
+<form action="" method="post">
     <button type="submit" name="operation" value="RatingDesc">Sort by Rating descending</button>
 </form>
 
